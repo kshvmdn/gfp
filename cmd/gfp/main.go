@@ -45,9 +45,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// TODO: Check that credentials are valid.
-	client := gfp.GetClient(accessToken)
-
 	if len(flag.Args()) == 0 {
 		flag.Usage()
 		os.Exit(1)
@@ -58,6 +55,9 @@ func main() {
 		fmt.Println("Expected unique usernames.")
 		os.Exit(1)
 	}
+
+	// TODO: Check that credentials are valid.
+	client := gfp.GetClient(accessToken)
 
 	user := gfp.Run(origin, target, options.workers, client)
 	fmt.Println(user.String())

@@ -1,8 +1,6 @@
 package gfp
 
-import (
-	"log"
-)
+import "log"
 
 type jobRequest struct {
 	User *UserNode

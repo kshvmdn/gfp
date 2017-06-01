@@ -1,7 +1,7 @@
 package gfp
 
 // startDispatcher initializes n workers and starts the dispatch process
-// for incoming work requests.
+// for incoming job requests.
 func startDispatcher(n int) {
 	workerQueue := make(chan chan jobRequest, n)
 

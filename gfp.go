@@ -54,8 +54,7 @@ func (node *UserNode) String() string {
 }
 
 // run retrieves the list of users that the current user is following and
-// enqueues each of them. In the case that the following list is exactly
-// 100 users long,
+// enqueues each of them.
 func (node *UserNode) run() {
 	opts := github.ListOptions{Page: node.Page, PerPage: 100}
 	following, _, err := client.Users.ListFollowing(ctx, node.Login, &opts)
@@ -77,10 +76,6 @@ func (node *UserNode) run() {
 		jobQueue <- jobRequest{User: user}
 	}
 
-	// FIXME: This breaks for users following n where n % 100 == 0 users. We'll
-	// have to retrieve this user's following count and then compare it with the
-	// length, perhaps even track how many we've seen (in the struct), to see if
-	// there are any remaining.
 	if len(following) == 100 {
 		node.Page++
 		jobQueue <- jobRequest{User: node}
