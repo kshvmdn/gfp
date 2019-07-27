@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/kshvmdn/gfp"
+	"github.com/kashav/gfp"
 )
 
 var options struct {
